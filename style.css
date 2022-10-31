@@ -1,0 +1,695 @@
+
+:root{
+    --primary-color-hue: 252;
+
+    --dark-color-lightness: 17%;
+    --white-color-lightness: 100%;
+    --light-color-lightness: 95%;
+
+    --color-white: hsl(252 , 30% , var(--white-color-lightness));
+    --color-light: hsl(252 , 30% , var(--light-color-lightness));
+    --color-grey: hsl(252 , 15% , 65%);
+    --color-primary: hsl( var(--primary-color-hue) , 75% , 60%);
+    --color-secondary: hsl(252 , 100% , 90%);
+    --color-success: hsl(120 , 95% , 65%);
+    --color-danger: hsl(0 , 95% , 65%);
+    --color-dark: hsl(252 , 30% , var(--dark-color-lightness));
+    --color-black: hsl(120 , 95% , 10%);
+
+    /* for button */
+
+    --border-radius: 2rem;
+    --card-border-radious: 1rem;
+    --btn-padding: 0.6rem 2rem;
+    --search-padding: 0.6rem 1rem;
+    --card-padding: 1rem;
+
+
+    --sticky-top-left: 5.4rem;
+    --sticky-top-right: -18rem;
+}
+
+*,
+*::before ,
+*::after
+{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    border: none;
+    font-family: sans-serif;
+}
+
+
+body{
+    color: var(--color-dark);
+    background: var(--color-light);
+    overflow-x: hidden;
+}
+
+/* GENERAL STYLE  */
+
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.profile-photo{
+    width: 2.7rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.btn{
+    display: inline-block;
+    padding: var(--btn-padding);
+    font-weight: 500;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 3s ease;
+    font-size: 15px;
+    
+}
+
+.btn:hover{
+    opacity: 0.8;
+}
+
+.btn-primary{
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+.text-bold{
+    font-weight: 600;
+}
+
+.text-muted{
+    color: var(--color-grey);
+}
+
+/* NAVBAR    */
+
+nav{
+    width: 100%;
+    background-color: var(--color-white);
+    padding: 0.7rem 0;
+    top: 0;
+    position: fixed;
+    z-index: 10;
+}
+
+nav .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.search-box{
+    background: var(--color-light);
+    border-radius: var(--border-radius);
+    padding: var(--search-padding);
+}
+.container .search-box input[type="search"]{
+    width: 30vw;
+    height: 4vh;
+    background: transparent;
+    font-size: 16px;
+    color: var(--color-dark);
+    margin-left: 10px;
+}
+
+nav .creat{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+/* -------------- MAIN PART------------- */
+
+main{
+    position: relative;
+    top: 5.4rem;
+}
+main .container{
+    display: grid;
+    grid-template-columns: 17vw auto 20vw;
+    gap: 2rem;
+    position: relative;
+}
+/* =============left========= */
+main .container .left{
+    height: max-content;
+    position: sticky;
+    top: var(--sticky-top-left);
+}
+
+main .container .left .profile{
+    background: var(--color-white);
+    border-radius: var(--card-border-radious);
+    padding: var(--card-padding);
+    display: flex;
+    align-items: center;
+    column-gap: 2rem;
+    width: 100%;
+}
+
+/* =============side bar============== */
+.left .sidebar{
+    margin-top: 1.5rem;
+    background: var(--color-white);
+    border-radius: var(--card-border-radious);
+  
+}
+
+.left .sidebar .menu-item{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    height: 4rem;
+    transition: all 3msec ease;
+    position: relative;
+}
+.left .sidebar .menu-item:hover {
+    background: var(--color-light);
+}
+.left .sidebar i{
+    font-size: 18px;
+    color: var(--color-grey);
+    margin-left: 2rem;
+    position: relative;
+}
+.left .sidebar i .notifications-count{
+    background: var(--color-danger);
+    font-size: 12px;
+    color: white;
+    width: fit-content;
+    border-radius: 0.8rem;
+    padding: 0.1rem 0.4rem;
+    position: absolute;
+    top: -0.4rem;
+    right: -0.2rem;
+}
+.left .sidebar h3{
+    margin-left: 12px;
+    font-size: 17px;
+}
+.left .sidebar .active{
+    background: var(--color-light);
+}
+.left .sidebar .active i,
+.left .sidebar .active h3{
+    color: var(--color-primary);
+}
+.left .sidebar .active::before{
+    content: "";
+    display: block;
+    width: 0.5rem;
+    height: 100%;
+    position: absolute;
+    background: var(--color-primary);
+}
+.left .sidebar .menu-item:first-child.active{
+    border-top-left-radius: var(--card-border-radious);
+    overflow: hidden;
+}
+
+.left .sidebar .menu-item:last-child.active{
+    border-bottom-left-radius: var(--card-border-radious);
+    overflow: hidden;
+}
+.left .btn{
+    margin-top: 1rem;
+    width: 60%;
+    text-align: center;
+    padding: 1rem 0;
+}
+.left .notification-popup{
+     position: absolute; 
+     display: flex;
+     flex-direction: column;
+     top: 0;
+     left: 110%;
+     width: 30rem;
+     background: var(--color-white);
+     border-radius: var(--card-border-radious);
+     padding: var(--card-padding);
+     box-shadow: 0 0 2rem hsl(var(--color-primary), 75% , 65% , 25%);
+     z-index: 8;
+     display: none;
+}
+
+.left .notification-popup::before{
+    content: "";
+    width: 1.2rem;
+    height: 1.2rem;
+    display: block;
+    position: absolute;
+    background: var(--color-white);
+    left: -0.6rem;
+    transform: rotate(45deg);
+}
+
+.left .notification-popup > div{
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.left .notification-popup small{
+    display: block;
+    margin-top: .4rem;
+}
+
+/*  Middle Story  */
+
+.middle .stories {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.6rem;
+    height: 12rem;
+   
+}
+
+.middle .stories .story{
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radious);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 12px;
+    width: 100%;
+   position: relative;
+   overflow: hidden;
+}
+
+.middle .stories .story::before{
+    content: "";
+    display: block;
+    height: 5.4rem;
+    width: 100%;
+    background: linear-gradient(transparent , rgba(0 ,0 , 0 , 0.75));
+    position: absolute;
+    bottom: 0;
+
+}
+
+.middle .stories .story .name{
+    z-index: 2;
+}
+
+.middle .stories .story:nth-child(1){
+    background: url("images/story/s1.jpg") no-repeat center center/cover;
+}
+
+.middle .stories .story:nth-child(2){
+    background: url("images/story/s2.jpg") no-repeat center center/cover;
+}
+
+.middle .stories .story:nth-child(3){
+    background: url("images/story/s3.jpg") no-repeat center center/cover;
+}
+
+.middle .stories .story:nth-child(4){
+    background: url("images/story/s4.jpg") no-repeat center center/cover;
+}
+
+.middle .stories .story:nth-child(5){
+    background: url("images/story/s5.jpg") no-repeat center center/cover;
+}
+
+.middle .stories .story:nth-child(6){
+    background: url("images/story/s6.jpg") no-repeat center center/cover;
+}
+
+.middle .story .profile-photo{
+    width: 2.5rem;
+    height: 2.5rem;
+    align-self: start;
+    border: 3px solid var(--color-primary);
+}
+
+.middle .create-post{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    justify-content: space-between;
+    background: var(--color-white);
+    padding: 0.4rem var(--card-padding);
+    border-radius: var(--border-radius);
+   
+}
+
+.middle .create-post input[type="text"]{
+    width: 100%;
+    font-size: 16px;
+    background: transparent;
+    padding-left: 1rem;
+    margin-right: 1rem;
+    color: var(--color-dark);
+}
+
+/* ====================== feeds =============== */
+
+.middle .feeds .feed{
+    background: var(--color-white);
+    border-radius: var(--card-border-radious);
+    padding: var(--card-padding);
+    margin-top: 1rem;
+    /* line-height: 1.5; */
+}
+.middle .feeds .feed .edit i{
+    font-size: 1.6rem;
+}
+
+.middle .feeds .feed .head{
+    display: flex;
+    justify-content: space-between;
+}
+.middle .feed .user{
+    display: flex;
+    justify-content: space-between;
+}
+.middle .feed .head .user .info{
+    margin-left: 1rem;
+}
+.middle .feed .photo{
+    border-radius: var(--card-border-radious);
+    overflow: hidden;
+    margin: 0.7rem 0;
+}
+
+.middle .feed .action-button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.6rem;
+    margin: 0.6rem;
+}
+
+.middle .feed .liked-by{
+    display: flex;
+  
+}
+.middle .feed .liked-by span{
+    width: 1.2rem;
+    height: 1.2rem;
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--color-white);
+    margin-left: -0.6rem;
+}
+.middle .feed .liked-by span:first-child{
+    margin: 0;
+}
+
+.middle .feed .liked-by p{
+    margin-left: 0.5rem;
+}
+.middle .feed .caption{
+    margin: .4rem 0;
+}
+
+/* ============================== RIGHT SIDE ================= */
+main .container .right{
+    height: max-content;
+    top: var(--sticky-top-right);
+    position: sticky;
+    bottom: 0;
+}
+.right .messages{
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radious);
+}
+.right .messages .heading{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+    
+.right .heading i{
+    font-size: 1.5rem;
+}
+
+.right .messages .search-box{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.right .messages .search-box i{
+    font-size: 1.5rem;
+}
+.right .messages .catagory{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+   
+}
+.right .messages .catagory h6{
+    font-size: 0.9rem;
+    width: 100%;
+    text-align: center;
+    border-bottom: 4px solid var(--color-light);
+    padding-bottom: 0.5rem;
+}
+.right .messages .catagory .active{
+    border-color: var(--color-dark);
+}
+
+.right .messages .catagory .message-request{
+    color: var(--color-primary);
+}
+
+.right .messages .message{
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+}
+
+.right .messages .message .profile-photo{
+    position: relative;
+    overflow: visible;
+}
+.right .messages .message .profile-photo img{
+    border-radius: 50%;
+}
+
+.right .message .message-body p{
+    font-size: 0.8rem;
+    padding-top: 0.5rem;
+}
+
+.right .messages .message:last-child{
+    margin: 0;
+}
+
+.right .messages .message .profile-photo .active{
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    border: 3px solid var(--color-white);
+    position: absolute;
+    background: red;
+    bottom: 0;
+    right: 0;
+}
+
+
+
+/* ================== FRIEND REQUEST START ================== */
+
+.right .friend-request{
+    margin-top: 1rem;
+}
+.right .friend-request h4{
+    color: var(--color-grey);
+    margin-bottom: 1rem;
+}
+.right .request{
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radious);
+    margin-bottom: 1rem;
+}
+.right .request .info{
+    display: flex;
+    gap: 1rem;  
+    margin-bottom: 1rem;
+}
+
+.right .request .info p{
+    font-size: 0.8rem;
+    padding-top: 0.5rem;
+}
+
+.right .request .action-button{
+    display: flex;
+    gap:1rem;
+}
+
+/* =========================================== THEME CUSTOMIZATION============================== */
+
+.theme-customization{
+    
+   background: rgba(255, 255, 255, 0.5);
+   width: 100%;
+   height: 100%;
+   position: fixed;
+   top: 0;
+   left: 0;
+   place-items: center;
+   display: grid;
+   z-index: 100;
+   text-align: center;
+   font-size: 1rem;
+    display: none;
+
+}
+.theme-customization .card{
+    /* background: antiquewhite; */
+    background: var(--color-white);
+    padding: 3rem;
+    border-radius: var(--card-border-radious);
+    width: 50%;
+         box-shadow: 0 0 1rem var(--color-primary);
+}
+
+/* ==================== font size ================== */
+.theme-customization .card .font-size{
+    margin-top: 3rem;
+}
+.theme-customization .card .font-size > div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-light);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radious);
+}
+
+.theme-customization .card .font-size .choose-size{
+    background: var(--color-secondary);
+    height: 0.3rem;
+    width: 100%;
+    margin: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.theme-customization .choose-size span{
+    width: 1rem;
+    height: 1rem;
+    background: var(--color-secondary);
+    border-radius: 50%;
+    cursor: pointer;
+}
+.theme-customization .choose-size span.active{
+    background: var(--color-primary);
+}
+
+/* <!-- ================ font color ========== --> */
+
+.theme-customization .color{
+   margin-top: 2rem;
+}
+
+.theme-customization .color .choose-color{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-light);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radious);
+}
+.theme-customization .color .choose-color span{
+    width: 2.2rem;
+    height: 2.2rem;
+    
+    border-radius: 50%;
+}
+.theme-customization .color .choose-color span:nth-child(1){
+    background: hsl(255 , 75% , 60%);
+}
+
+.theme-customization .color .choose-color span:nth-child(2){
+    background: hsl(52, 75%, 60%);
+}
+
+.theme-customization .color .choose-color span:nth-child(3){
+    background: hsl(352, 75%, 60%);
+}
+
+.theme-customization .color .choose-color span:nth-child(4){
+    background: hsl(152, 75%, 60%);
+}
+
+.theme-customization .color .choose-color span:nth-child(5){
+    background: hsl(202, 75%, 60%);
+}
+
+.theme-customization .color .choose-color span.active{
+    border: 3px solid white;
+}
+
+/* ========================== Background ================ */
+
+.theme-customization .background{
+    margin-top: 2rem;
+}
+.theme-customization .background .choose-bg{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+.theme-customization .choose-bg > div{
+    padding: var(--card-padding);
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-radius: 0.4rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+.theme-customization .choose-bg > div.active{
+    border: 2px solid var(--color-primary);
+}
+
+.theme-customization .choose-bg .bg-1{
+    background: white;
+    color: black;
+}
+.theme-customization .choose-bg .bg-2{
+    background: hsl(252 , 30% , 17%);
+    color: white;
+}
+.theme-customization .choose-bg .bg-3{
+    background: hsl(252 , 30% , 10%);
+    color: white;
+}
+.theme-customization .choose-bg span{
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid var(--color-grey);
+    border-radius: 50%;
+    margin-right: 0.8rem;
+}
+
